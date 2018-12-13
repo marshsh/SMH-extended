@@ -1,0 +1,39 @@
+
+
+
+
+##########################
+Para usar Python2.7
+
+ source activate py27
+
+
+
+##########################
+Para modificar un método de una clase que esta en C:
+
+En la carpeta:
+
+/home/Mariana/Sampled-MinHashing/src/smh/
+
+estan los archivos C en los que realmente sucede todo. Se pueden modificar. Pero si agregamos métodos, luego los tenemos que agregar a la API   smh_api.py que se encuentra en el BIN/. Para hacer esto (agregar los nuevos métodos a la API), necesitamos ir al archivo correspondiente ".i" (de interface) en la carpeta    /home/mariana/Sampled-MinHashing/python/smh      y ahí agregar la línea del método. Por ejemplo, en "mhlink.i" podemos agregar:
+
+extern ListDB mhlink_make_model(ListDB *, ListDB *);
+
+para agregar el método "mhlink_make_model()"   del archivo    "mhlink.c"    de la carpeta    /Sampled-MinHashing/src/smh      
+
+
+Para que tomen efecto los cambios, es necesario borrar las carpetas    bin, build     de Sampled-MinHashing y volver a compilar el programa:
+
+
+
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+
+
+###########################
+
+
