@@ -42,7 +42,7 @@ def listdb_load(filename):
         ldb = sa.listdb_load_from_file(filename)
         return ListDB(ldb = ldb)
     else:
-        print filename, "does not exists"
+        print (filename, "does not exists")
         return None
 
 def csr_load_from_listdb_file(listdb_file):
@@ -347,3 +347,5 @@ class SMHDiscoverer:
 
         return ListDB(ldb = models)
         
+    def hello(self):
+    	print("Heloooooo Cambiado")
