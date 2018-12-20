@@ -23,11 +23,16 @@
 #include "ifindex.h"
 #include "sampledmh.h"
 
+#include <string.h>
+
 /**
- * @brief Retrieves the items that were 
+ * @brief Takes the HashTable, searches its buckets with more than "min_set_size" coocurring items and
+ *        adds the elements of such buckets to the *coitems ListDB.
  *
- * @param listdb Database of lists to be hashed
- * @param hash_table Hash table
+ * @param *coitems ListDB in wich we'll store the listS of coocurring items. 
+ * @param *hash_table Hash table being extracted into list of impotant buckets.
+ * @param min_set_size   Minimum number of items in a bucket needed to conscider the bucket as evidence 
+ *        of coocurrence of items.
  */ 
 void sampledmh_get_coitems(ListDB *coitems, HashTable *hash_table, uint min_set_size)
 {
@@ -35,11 +40,18 @@ void sampledmh_get_coitems(ListDB *coitems, HashTable *hash_table, uint min_set_
 
      for (i = 0; i < hash_table->used_buckets.size; i++){ // scan buckets to find co-occurring items
           if (hash_table->buckets[hash_table->used_buckets.data[i].item].items.size >= min_set_size) {
+            //  " HT->buckets[hash_table->used_buckets.data[i].item]  " is just a way of getting 
+            //  the i-th bucket's list of elements.
                listdb_push(coitems, &hash_table->buckets[hash_table->used_buckets.data[i].item].items);
           } else {
                list_destroy(&hash_table->buckets[hash_table->used_buckets.data[i].item].items);
           }
           
+
+          // commentMar:  Estoy casi segura de que en la siguiente línea hay una fuga de memoria (chiquita)
+          // pues con "list_init" se realiza " listdb->lists = NULL " seguro me equivoco, pero 
+          // creeeeeo que ahí no se destruye la lista blablabl.items, si no que nada más se elimina
+          // el apuntador.
           list_init(&hash_table->buckets[hash_table->used_buckets.data[i].item].items);
           hash_table->buckets[hash_table->used_buckets.data[i].item].hash_value = 0;
      }
@@ -55,6 +67,7 @@ void sampledmh_get_coitems(ListDB *coitems, HashTable *hash_table, uint min_set_
  * @param tuple_size Number of MinHash values per tuple
  * @param number_of_tuples Number of MinHash tuples
  * @param table_size Number of buckets in the hash table
+ * @param min_set_size 
  */
 ListDB sampledmh_mine(ListDB *listdb,
                       uint tuple_size,
@@ -213,4 +226,14 @@ void sampledmh_prune(ListDB *ifindex, ListDB *mined, uint stop, uint hits, doubl
 
      // removes small sets
      listdb_delete_smallest(mined, stop);
+}
+
+
+/**
+* @brief Probando como agregar metodos, usamos la función Printf().
+*/
+void smh_print2(uint uno)
+{
+     char str1[] = "Holaaaaa 2 desde sampledmh.C";
+     printf("%s\n Entero : %d \n", str1, uno );
 }

@@ -435,7 +435,8 @@ void list_print_range(List *list, uint low, uint high)
 }
 
 /**
- * @brief Adds a new item to the end of a list
+ * @brief Adds a new item to the end of a list, without checking for repetitions.
+ * If you would like to preserve a list with unique elements, use list_unique() after pushing element.
  *
  * @param list List where the item will be added
  * @param item Item to be added

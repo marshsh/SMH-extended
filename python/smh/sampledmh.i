@@ -11,4 +11,5 @@ extern ListDB sampledmh_mine(ListDB *, uint, uint, uint, uint);
 extern ListDB sampledmh_mine_weighted(ListDB *, uint, uint, uint,
                                       double *, uint);
 extern void sampledmh_prune(ListDB *, ListDB *, uint, uint, double, double);
+extern void smh_print2(uint);
 

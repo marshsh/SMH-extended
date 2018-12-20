@@ -268,7 +268,7 @@ class SMHDiscoverer:
              weights = None,
              expand = None):
         """
-        samples nverted file to mine sets of highly co-occurring items
+        samples inverted file to mine sets of highly co-occurring items
         """
         if not weights and not expand:
             mined = sa.sampledmh_mine(listdb.ldb,
@@ -347,5 +347,12 @@ class SMHDiscoverer:
 
         return ListDB(ldb = models)
         
+
+class Aprende():
+    """docstring for Aprende"""
+    def __init__(self):
+        print("Iniciamos objeto de Aprende")
+        
     def hello(self):
     	print("Heloooooo Cambiado")
+        sa.sampledmh_print()

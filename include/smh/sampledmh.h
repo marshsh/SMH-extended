@@ -28,4 +28,5 @@ ListDB sampledmh_expand_frequencies_and_weights(ListDB *, ListDB *, double *, do
 ListDB sampledmh_mine(ListDB *, uint, uint, uint, uint);
 ListDB sampledmh_mine_weighted(ListDB *, uint, uint, uint, double *, uint);
 void sampledmh_prune(ListDB *, ListDB *, uint, uint, double, double);
+void smh_print2(uint);
 #endif

@@ -41,8 +41,8 @@ typedef struct HashTable {
 	Bucket *buckets;
 	List used_buckets;
 	uint *a;
-   uint *b;
-   double *weights;
+    uint *b;
+    double *weights;
 } HashTable;
 
 typedef struct HashIndex {

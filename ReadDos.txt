@@ -27,6 +27,13 @@ Para que tomen efecto los cambios, es necesario borrar las carpetas    bin, buil
 
 
 
+
+
+cd ..
+
+rm -rf ./build
+rm -rf ./bin
+
 mkdir build
 cd build
 cmake ..
@@ -36,4 +43,4 @@ sudo make install
 
 ###########################
 
-
+s
