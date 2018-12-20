@@ -48,7 +48,7 @@ void sampledmh_get_coitems(ListDB *coitems, HashTable *hash_table, uint min_set_
           }
           
 
-          // commentMar:  Estoy casi segura de que en la siguiente línea hay una fuga de memoria (chiquita)
+          // commentMar:  Creo que en la siguiente línea hay una fuga de memoria (chiquita)
           // pues con "list_init" se realiza " listdb->lists = NULL " seguro me equivoco, pero 
           // creeeeeo que ahí no se destruye la lista blablabl.items, si no que nada más se elimina
           // el apuntador.
