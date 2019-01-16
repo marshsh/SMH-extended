@@ -46,12 +46,7 @@ void sampledmh_get_coitems(ListDB *coitems, HashTable *hash_table, uint min_set_
           } else {
                list_destroy(&hash_table->buckets[hash_table->used_buckets.data[i].item].items);
           }
-          
 
-          // commentMar:  Creo que en la siguiente línea hay una fuga de memoria (chiquita)
-          // pues con "list_init" se realiza " listdb->lists = NULL " seguro me equivoco, pero 
-          // creeeeeo que ahí no se destruye la lista blablabl.items, si no que nada más se elimina
-          // el apuntador.
           list_init(&hash_table->buckets[hash_table->used_buckets.data[i].item].items);
           hash_table->buckets[hash_table->used_buckets.data[i].item].hash_value = 0;
      }
