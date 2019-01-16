@@ -1,4 +1,4 @@
-# New ReadMe
+New ReadMe
 ==================
 Forked Sampled Min-Hashing (SMH) in wich we've made some changes.
 
